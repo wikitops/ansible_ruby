@@ -1,0 +1,13 @@
+---
+
+- name: RUBY DEBIAN | Installation
+  apt:
+    name:
+      - ruby-full
+      - ruby-dev
+      - build-essential
+      - autogen
+      - autoconf
+      - libtool
+      - rubygems
+    state: present

@@ -1,0 +1,30 @@
+---
+
+- name: RUBY | Manage RedHat environment
+  include_tasks: redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: RUBY | Manage Debian environment
+  include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: RUBY | Manage PATH in environment
+  template:
+    src: etc/profile.d/rubygems.sh.j2
+    dest: /etc/profile.d/rubygems.sh
+    owner: root
+    group: root
+    mode: 0644
+
+- name: RUBY | Bundler installation
+  gem:
+    name: bundler
+    state: present
+    user_install: no
+  when: ruby_bundler_installation
+
+- name: RUBY | Install GEM packages
+  gem:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ ruby_gem_packages }}"

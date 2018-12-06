@@ -1,0 +1,10 @@
+---
+
+- name: RUBY REDHAT | Installation
+  yum:
+    name:
+      - ruby
+      - ruby-devel
+      - rubygems
+      - '@development'
+    state: present

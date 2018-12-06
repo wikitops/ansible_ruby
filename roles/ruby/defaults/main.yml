@@ -1,0 +1,14 @@
+---
+
+###
+# RUBY
+###
+
+# User
+ruby_user: "{{ ansible_user }}"
+
+# Install Bundler
+ruby_bundler_installation: true
+
+# A list of Ruby gems to install
+ruby_gem_packages: []
